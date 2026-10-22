@@ -1,0 +1,28 @@
+{
+  "resolution": 256,
+  "seed": 7183,
+  "rank": 2,
+  "updates": 32,
+  "steps": [
+    4,
+    8,
+    20
+  ],
+  "seeds": [
+    3,
+    13
+  ],
+  "training_images": {
+    "astronaut.png": "a photograph of an astronaut in a white space suit",
+    "coffee.png": "a cup of coffee on a table",
+    "chelsea.png": "a close-up portrait of a cat",
+    "rocket.jpg": "a space rocket on a launch pad",
+    "camera.png": "a black and white photograph of a photographer",
+    "moon.png": "a photograph of the moon"
+  },
+  "evaluation_prompts": [
+    "a yellow bicycle parked beside a brick wall",
+    "a blue ceramic vase on a wooden desk",
+    "a red apple in a white bowl"
+  ]
+}

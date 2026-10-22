@@ -1,9 +1,5 @@
-# P06 交接记录
+# P06 handoff
 
-当前阶段：上游版本已固定，正式验收待完成。
+The official DDIM solver and LCM boundary functions have been integrated at a fixed revision. Both schedule/metric tests pass on Python 3.11. Shared SD1.5 and the public LCM-LoRA are being downloaded with checksum verification before the GPU run.
 
-最近已核实：项目远端以及 UPSTREAM.md 中的源码提交。
-
-待执行：运行上游入口 examples/consistency_distillation/train_lcm_distill_lora_sd_wds.py ，保存日志，再按项目 README 的实验目标添加留出集对照。
-
-验收要求：从干净克隆运行演示与正式基线，使用保存的预测重建结果，涉及训练则测试权重重载。
+Next command: `python run.py demo --base-path <sd15> --adapter-path <lcm15>`, then `python run.py reproduce --base-path <sd15> --adapter-path <lcm15>`. Record the actual adapter update, full inference grid and measured timing before release.
