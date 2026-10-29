@@ -12,6 +12,14 @@ python -m unittest discover -s tests
 
 Use Python 3.11. The default device is CUDA if available. To reuse a local FP16 model and public adapter, supply `--base-path <sd15-directory> --adapter-path <lcm-directory>`. `--out` selects a separate experiment directory.
 
+![Four, eight and twenty steps for teacher and both adapters on the first held-out prompt](results/comparison.png)
+
+## Measured result
+
+On the RTX 4060 Laptop, the 20-step teacher took a median 2.774 s. The four-step public and local adapters took 0.638 s and 0.655 s. Their mean pixel MSE to the matched 20-step teacher was 0.1633 and 0.1263, respectively. The four-step DDIM baseline reached 0.0799, so neither adapter improved this teacher-agreement measure. At 256 px with guidance fixed to 1.0, the example bicycle is barely identifiable in several outputs. The demo additionally compares 512 px sampling with the teacher's conventional CFG and reports the guidance per arm. Its images are separate from the controlled timing benchmark.
+
+[All nine settings and peak memory](results/summary.csv) · [54 individual measurements](results/measurements.json) · [32 training losses and reload check](results/training.json)
+
 ## Protocol
 
 - Fixed LCM/DDIM solver and boundary formulas from the Hugging Face implementation. Training uses a frozen teacher, online LoRA predictions and a detached student target at the previous timestep. Six bundled photographs from scikit-image and their explicit captions supply training latents.

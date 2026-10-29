@@ -71,18 +71,24 @@ def distill(pipe,out):
     (out/"training.json").write_text(json.dumps({"loss":trace,"adapter_update_l2":update,"updates":len(trace)},indent=2))
 
 
-def sample(pipe,prompt,seed,steps,size):
+def sample(pipe,prompt,seed,steps,size,guidance=1.0):
     device=pipe.device
     sd.sync(device)
     if device.type=="cuda":torch.cuda.reset_peak_memory_stats(device)
     start=time.perf_counter()
     with torch.inference_mode():
-        image=pipe(prompt,num_inference_steps=steps,height=size,width=size,guidance_scale=1.0,
+        image=pipe(prompt,num_inference_steps=steps,height=size,width=size,guidance_scale=guidance,
                   generator=torch.Generator(device=device).manual_seed(seed)).images[0]
     sd.sync(device)
     elapsed=time.perf_counter()-start
     mem=torch.cuda.max_memory_allocated(device) if device.type=="cuda" else None
     return image,elapsed,mem
+
+
+def release_pipeline(device):
+    import gc
+    gc.collect()
+    if device.type == "cuda": torch.cuda.empty_cache()
 
 
 def reproduce(cache,out,device,base_path,adapter_path):
@@ -91,13 +97,15 @@ def reproduce(cache,out,device,base_path,adapter_path):
     sd.seed_all(CFG["seed"])
     out.mkdir(parents=True,exist_ok=True)
     pipe=sd.load_pipeline(device,False,cache,base_path)
-    schedule_cfg=pipe.scheduler.config
     distill(pipe,out)
-    pipe.unload_lora_weights()
+    del pipe
+    release_pipeline(device)
     images=out/"predictions"
     images.mkdir(exist_ok=True)
     records=[]
     for method in ("teacher","trained","public"):
+        pipe=sd.load_pipeline(device,False,cache,base_path)
+        schedule_cfg=pipe.scheduler.config
         if method=="teacher":
             pipe.scheduler=DDIMScheduler.from_config(schedule_cfg)
         else:
@@ -107,7 +115,6 @@ def reproduce(cache,out,device,base_path,adapter_path):
                 set_peft_model_state_dict(pipe.unet,load_file(str(out/"trained.safetensors")))
                 pipe.unet.eval()
             else:
-                pipe.unload_lora_weights()
                 pipe.load_lora_weights(str(adapter_path) if adapter_path else ADAPTER,
                     revision=None if adapter_path else REV, cache_dir=str(cache/"hub"),
                     weight_name="pytorch_lora_weights.safetensors")
@@ -119,6 +126,8 @@ def reproduce(cache,out,device,base_path,adapter_path):
                     path=f"{method}-p{j}-s{seed}-n{steps}.png"
                     img.save(images/path)
                     records.append(dict(method=method,prompt=j,seed=seed,steps=steps,file=path,seconds=secs,peak_cuda_bytes=mem))
+        del pipe
+        release_pipeline(device)
     (out/"measurements.json").write_text(json.dumps(records,indent=2))
     evaluate(out)
 
@@ -153,10 +162,30 @@ def evaluate(out):
 
 
 def demo(cache,out,device,base_path,adapter_path):
-    pipe=sd.load_pipeline(device,False,cache,base_path)
-    pipe.scheduler=LCMScheduler.from_config(pipe.scheduler.config)
-    pipe.load_lora_weights(str(adapter_path) if adapter_path else ADAPTER,revision=None if adapter_path else REV,
-                           weight_name="pytorch_lora_weights.safetensors",cache_dir=str(cache/"hub"))
-    photo,secs,_=sample(pipe,CFG["evaluation_prompts"][0],CFG["seeds"][0],4,CFG["resolution"])
+    from peft import set_peft_model_state_dict
+    from safetensors.torch import load_file
     out.mkdir(parents=True,exist_ok=True)
-    photo.save(out/"four-step.png");print(f"{secs:.3f}s -> {out/'four-step.png'}")
+    panel=Image.new("RGB",(3*256,280),"white")
+    modes=[("teacher",20,7.5),("trained",4,1.0),("public",4,1.0)]
+    details=[]
+    for idx,(method,n,guidance) in enumerate(modes):
+        pipe=sd.load_pipeline(device,False,cache,base_path)
+        cfg=pipe.scheduler.config
+        pipe.scheduler=(DDIMScheduler if method=="teacher" else LCMScheduler).from_config(cfg)
+        if method=="trained":
+            sd.add_adapter(pipe.unet,CFG["rank"])
+            set_peft_model_state_dict(pipe.unet,load_file(str(ROOT/"results/trained.safetensors")))
+            pipe.unet.eval()
+        elif method=="public":
+            pipe.load_lora_weights(str(adapter_path) if adapter_path else ADAPTER,revision=None if adapter_path else REV,
+                                   weight_name="pytorch_lora_weights.safetensors",cache_dir=str(cache/"hub"))
+        photo,secs,_=sample(pipe,CFG["evaluation_prompts"][0],CFG["seeds"][0],n,512,guidance)
+        photo.save(out/f"{method}.png")
+        panel.paste(photo.resize((256,256)),(idx*256,24))
+        ImageDraw.Draw(panel).text((idx*256+5,3),f"{method}: {n} steps, CFG {guidance}",fill="black")
+        details.append({"method":method,"steps":n,"guidance":guidance,"seconds":secs,"resolution":512})
+        del pipe
+        release_pipeline(device)
+    panel.save(out/"native-preview.png")
+    (out/"native-settings.json").write_text(json.dumps(details,indent=2))
+    print(out/"native-preview.png")
