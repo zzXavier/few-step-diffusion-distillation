@@ -1,0 +1,23 @@
+[
+  {
+    "method": "teacher",
+    "steps": 20,
+    "guidance": 7.5,
+    "seconds": 3.0814537000042037,
+    "resolution": 512
+  },
+  {
+    "method": "trained",
+    "steps": 4,
+    "guidance": 1.0,
+    "seconds": 0.686150199995609,
+    "resolution": 512
+  },
+  {
+    "method": "public",
+    "steps": 4,
+    "guidance": 1.0,
+    "seconds": 0.9175605999989784,
+    "resolution": 512
+  }
+]
