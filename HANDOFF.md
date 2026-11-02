@@ -1,4 +1,4 @@
-# P06 handoff
+# Few-step diffusion distillation handoff
 
 Formal run completed on Windows using SD1.5 FP16, an RTX 4060 Laptop GPU, the public LCM adapter and a rank-two adapter trained for 32 updates. Adapter L2 update was 0.370499. Each evaluation arm loaded a fresh copy of the base to isolate its adapter. Every trained parameter tensor was checked after serialization and reload.
 
