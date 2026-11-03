@@ -1,9 +1,5 @@
-# Upstream sources
+# Sources and integration
 
-[huggingface/diffusers](https://github.com/huggingface/diffusers/tree/35087a644038eb531f48581708d4763044cb4852)
-
-- Revision: 35087a644038eb531f48581708d4763044cb4852
-- Reported code license: Apache-2.0
-- Starting point: examples/consistency_distillation/train_lcm_distill_lora_sd_wds.py
-- Integration: use the upstream implementation as a separately pinned dependency. Preserve the original notices when redistributing source.
-- Weights and data have separate terms. Their source, revision and attribution belong with the experiment manifest.
+- [Hugging Face Diffusers consistency distillation](https://github.com/huggingface/diffusers/tree/35087a644038eb531f48581708d4763044cb4852/examples/consistency_distillation) provides the DDIM solver, boundary scalings and prediction conversion. The applicable notice and Apache-2.0 license accompany the extracted functions in `src/lcm_math.py` and `src/LICENSE.diffusers`. This project adapts the surrounding training loop to one shared UNet plus a toggled LoRA, and adds held-out inference and timing.
+- [Stable Diffusion v1.5, pinned revision](https://huggingface.co/stable-diffusion-v1-5/stable-diffusion-v1-5/tree/451f4fe16113bff5a5d2269ed5ad43b0592e9a14) and [public LCM adapter, pinned revision](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5/tree/cf2fced511dbe7e26c8d1d397e728fbab875db4b). Consult the respective model cards for terms. Neither original weight file is included.
+- [scikit-image sample photographs](https://scikit-image.org/docs/0.24.x/api/skimage.data.html) load from the pinned wheel. Image names and captions are specified in the experiment configuration and credit is provided in the source dataset descriptions.

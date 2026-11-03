@@ -1,0 +1,1 @@
+Run `python run.py demo` to generate a four-step bicycle image using the public adapter.
