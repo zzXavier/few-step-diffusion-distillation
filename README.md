@@ -2,6 +2,10 @@
 
 Measure the tradeoff between sampling steps, teacher agreement, end-to-end latency and peak allocated GPU memory using one SD 1.5 base, the public LCM-LoRA and a separately trained rank-two adapter.
 
+![512 px bicycle prompt: teacher, local 32-update adapter and public adapter](examples/native-preview.png)
+
+In this native-resolution demo both the teacher and the public four-step adapter rendered the requested yellow bicycle by a brick wall. The local 32-update adapter produced a blurred field and missed the object. The table below measures a separate controlled 256 px protocol.
+
 ```powershell
 python -m pip install -r requirements.txt
 python run.py demo
@@ -28,3 +32,7 @@ On the RTX 4060 Laptop, the 20-step teacher took a median 2.774 s. The four-step
 - The quality metric is pixel MSE to the matched 20-step DDIM teacher output. This measures agreement with a reference trajectory; the prompts and images are provided for visual review. Step counts, dimensions, reference seed and guidance for the comparisons are recorded explicitly in [the config](configs/protocol.json) and [experiment module](src/runner.py).
 
 [Upstream](UPSTREAM.md) · [Handoff and latest verified stage](HANDOFF.md)
+
+## Clean-clone replication
+
+A second full run from GitHub rebuilt the 256 px quality and timing tables from 54 new images, and the 512 px demo used the archived custom adapter. For the two fixed-weight methods, all 36 images matched pixel for pixel. Retraining the local adapter on the RTX 4060 produced a different state. Mean teacher-agreement MSE differed by 0.000081, 0.000130 and 0.001070 at 4, 8 and 20 steps. The 8- and 20-step rows exceeded an additional absolute 0.0001 check. Both runs support the same comparison, but a fresh GPU training run should not be expected to reproduce every digit. Timing is independently measured each run. [Independent training and result table](results/independent-retrain/summary.csv).
