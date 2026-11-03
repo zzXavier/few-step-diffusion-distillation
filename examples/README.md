@@ -1,1 +1,1 @@
-Run `python run.py demo` to generate a four-step bicycle image using the public adapter.
+`python run.py demo` compares one 512 px prompt at 20 teacher steps and four adapter steps. The locally trained LoRA is shipped in `results/` under the accompanying SD1.5 terms. Timed 256 px experiments are a separate protocol.

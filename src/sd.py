@@ -1,15 +1,15 @@
 """Shared SD1.5 loading, deterministic sampling, LoRA save/reload and measured output utilities."""
 from contextlib import contextmanager
-import hashlib
-import json
+
+
 from pathlib import Path
 import random
-import time
+
 
 import numpy as np
 from PIL import Image
 import torch
-from diffusers import DDPMScheduler, StableDiffusionPipeline
+from diffusers import StableDiffusionPipeline
 from peft import LoraConfig, get_peft_model_state_dict, set_peft_model_state_dict
 from safetensors.torch import load_file, save_file
 
@@ -97,30 +97,5 @@ def seed_all(seed):
 
 
 def sync(device):
-    if device.type=="cuda":
+    if device.type == "cuda":
         torch.cuda.synchronize(device)
-
-
-@torch.inference_mode()
-def generate(pipe,prompt,seed,steps,size,dest):
-    sync(pipe.device)
-    if pipe.device.type=="cuda":
-        torch.cuda.reset_peak_memory_stats(pipe.device)
-    start=time.perf_counter()
-    out=pipe(prompt,num_inference_steps=steps,height=size,width=size,guidance_scale=1.,
-             generator=torch.Generator(device=pipe.device).manual_seed(seed)).images[0]
-    sync(pipe.device)
-    elapsed=time.perf_counter()-start
-    peak=torch.cuda.max_memory_allocated(pipe.device) if pipe.device.type=="cuda" else None
-    dest.parent.mkdir(parents=True,exist_ok=True)
-    out.save(dest)
-    return {"seconds":elapsed,"peak_cuda_bytes":peak}
-
-
-def attachment_manifest(path):
-    items=json.loads((path/"pairs.json").read_text(encoding="utf8"))
-    for r in items:
-        for file,sha in zip(r["images"],r["sha256"]):
-            if hashlib.sha256((path/file).read_bytes()).hexdigest()!=sha:
-                raise ValueError(f"Image checksum mismatch: {file}")
-    return items

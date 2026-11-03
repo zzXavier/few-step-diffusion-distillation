@@ -1,0 +1,488 @@
+[
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 4,
+    "file": "teacher-p0-s3-n4.png",
+    "seconds": 0.6534179000009317,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 8,
+    "file": "teacher-p0-s3-n8.png",
+    "seconds": 1.1031997999962186,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 20,
+    "file": "teacher-p0-s3-n20.png",
+    "seconds": 2.262170399997558,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 4,
+    "file": "teacher-p0-s13-n4.png",
+    "seconds": 0.5709487999993144,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 8,
+    "file": "teacher-p0-s13-n8.png",
+    "seconds": 1.162078900000779,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 20,
+    "file": "teacher-p0-s13-n20.png",
+    "seconds": 2.509322899997642,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 4,
+    "file": "teacher-p1-s3-n4.png",
+    "seconds": 0.5118676999991294,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 8,
+    "file": "teacher-p1-s3-n8.png",
+    "seconds": 1.0159079000004567,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 20,
+    "file": "teacher-p1-s3-n20.png",
+    "seconds": 2.708801000000676,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 4,
+    "file": "teacher-p1-s13-n4.png",
+    "seconds": 0.6855351999984123,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 8,
+    "file": "teacher-p1-s13-n8.png",
+    "seconds": 1.6118798999959836,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 20,
+    "file": "teacher-p1-s13-n20.png",
+    "seconds": 2.853043400005845,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 4,
+    "file": "teacher-p2-s3-n4.png",
+    "seconds": 0.5802614999993239,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 8,
+    "file": "teacher-p2-s3-n8.png",
+    "seconds": 1.0067949000003864,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 20,
+    "file": "teacher-p2-s3-n20.png",
+    "seconds": 2.8383953999946243,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 4,
+    "file": "teacher-p2-s13-n4.png",
+    "seconds": 0.5687226000009105,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 8,
+    "file": "teacher-p2-s13-n8.png",
+    "seconds": 1.3369386999984272,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "teacher",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 20,
+    "file": "teacher-p2-s13-n20.png",
+    "seconds": 3.1415081999948598,
+    "peak_cuda_bytes": 2335488512
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 4,
+    "file": "trained-p0-s3-n4.png",
+    "seconds": 0.7477180999994744,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 8,
+    "file": "trained-p0-s3-n8.png",
+    "seconds": 1.5703445999970427,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 20,
+    "file": "trained-p0-s3-n20.png",
+    "seconds": 3.9747551000036765,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 4,
+    "file": "trained-p0-s13-n4.png",
+    "seconds": 0.8499938000022667,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 8,
+    "file": "trained-p0-s13-n8.png",
+    "seconds": 2.0038996000002953,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 20,
+    "file": "trained-p0-s13-n20.png",
+    "seconds": 3.8776223999957438,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 4,
+    "file": "trained-p1-s3-n4.png",
+    "seconds": 0.7392020999977831,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 8,
+    "file": "trained-p1-s3-n8.png",
+    "seconds": 1.1428481000039028,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 20,
+    "file": "trained-p1-s3-n20.png",
+    "seconds": 3.254099799996766,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 4,
+    "file": "trained-p1-s13-n4.png",
+    "seconds": 0.5181955999942147,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 8,
+    "file": "trained-p1-s13-n8.png",
+    "seconds": 0.9105732000025455,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 20,
+    "file": "trained-p1-s13-n20.png",
+    "seconds": 2.2435868000029586,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 4,
+    "file": "trained-p2-s3-n4.png",
+    "seconds": 0.5055102999976953,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 8,
+    "file": "trained-p2-s3-n8.png",
+    "seconds": 1.1179406000010204,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 20,
+    "file": "trained-p2-s3-n20.png",
+    "seconds": 2.712265699999989,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 4,
+    "file": "trained-p2-s13-n4.png",
+    "seconds": 0.5717090999969514,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 8,
+    "file": "trained-p2-s13-n8.png",
+    "seconds": 1.0789575000017066,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "trained",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 20,
+    "file": "trained-p2-s13-n20.png",
+    "seconds": 3.140393400004541,
+    "peak_cuda_bytes": 2337082880
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 4,
+    "file": "public-p0-s3-n4.png",
+    "seconds": 0.652836399996886,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 8,
+    "file": "public-p0-s3-n8.png",
+    "seconds": 1.2363794999982929,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 3,
+    "steps": 20,
+    "file": "public-p0-s3-n20.png",
+    "seconds": 2.905484900002193,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 4,
+    "file": "public-p0-s13-n4.png",
+    "seconds": 0.5970257000008132,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 8,
+    "file": "public-p0-s13-n8.png",
+    "seconds": 1.090514900002745,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 0,
+    "seed": 13,
+    "steps": 20,
+    "file": "public-p0-s13-n20.png",
+    "seconds": 2.8485683999970206,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 4,
+    "file": "public-p1-s3-n4.png",
+    "seconds": 0.620596699998714,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 8,
+    "file": "public-p1-s3-n8.png",
+    "seconds": 1.2093144999962533,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 3,
+    "steps": 20,
+    "file": "public-p1-s3-n20.png",
+    "seconds": 2.7384865999993053,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 4,
+    "file": "public-p1-s13-n4.png",
+    "seconds": 0.6234041999996407,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 8,
+    "file": "public-p1-s13-n8.png",
+    "seconds": 1.2782693999979529,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 1,
+    "seed": 13,
+    "steps": 20,
+    "file": "public-p1-s13-n20.png",
+    "seconds": 3.560111799997685,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 4,
+    "file": "public-p2-s3-n4.png",
+    "seconds": 0.6836688999974285,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 8,
+    "file": "public-p2-s3-n8.png",
+    "seconds": 1.0406832000007853,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 3,
+    "steps": 20,
+    "file": "public-p2-s3-n20.png",
+    "seconds": 2.7371663999947486,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 4,
+    "file": "public-p2-s13-n4.png",
+    "seconds": 0.8088599999973667,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 8,
+    "file": "public-p2-s13-n8.png",
+    "seconds": 1.488619399999152,
+    "peak_cuda_bytes": 2480331264
+  },
+  {
+    "method": "public",
+    "prompt": 2,
+    "seed": 13,
+    "steps": 20,
+    "file": "public-p2-s13-n20.png",
+    "seconds": 2.6113320000004023,
+    "peak_cuda_bytes": 2480331264
+  }
+]
